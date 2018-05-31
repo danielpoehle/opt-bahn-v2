@@ -1,0 +1,1469 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass scrartcl
+\use_default_options true
+\begin_modules
+figs-within-sections
+eqs-within-sections
+tabs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language ngerman
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement tbh
+\paperfontsize default
+\spacing onehalf
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 2
+\paragraph_separation skip
+\defskip smallskip
+\quotes_language german
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Heuristiken und Optimierungs\SpecialChar \-
+verfahren bei der Betriebs\SpecialChar \-
+planung im Bahn\SpecialChar \-
+verkehr
+ und im öffentlichen Personennahverkehr
+\end_layout
+
+\begin_layout Author
+Dr.-Ing.
+ Daniel Pöhle
+\end_layout
+
+\begin_layout Date
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList table
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Einleitung und Grundbegriffe
+\end_layout
+
+\begin_layout Subsection
+Ziel des Buchs
+\end_layout
+
+\begin_layout Subsection
+Grundlegende Begriffe und Zusammenhänge
+\end_layout
+
+\begin_layout Itemize
+Linienplanung, Fahrplanung, Umlaufplanung, Dienstplanung
+\end_layout
+
+\begin_layout Itemize
+Typen von Liniennetzen
+\end_layout
+
+\begin_layout Itemize
+Fahrplan, Taktfahrplan, Trennung von Trasse und Zug
+\end_layout
+
+\begin_layout Itemize
+Umlauf
+\end_layout
+
+\begin_layout Itemize
+Dienst
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Grundlagen mathematische Optimierungsverfahren
+\end_layout
+
+\begin_layout Subsection
+Lineare Optimierung
+\end_layout
+
+\begin_layout Standard
+Bei einem Optimierungsproblem soll aus einer Vielzahl möglicher Alternativen
+ die nach einem Gütekriterium beste (optimale) Alternative gefunden werden.
+ Das Gütekriterium wird auch als Zielfunktion bezeichnet.
+ Der Lösungsraum aller möglicher Alternativen wird durch Nebenbedingungen
+ (auch als Restriktionen bezeichnet) begrenzt.
+ Bei linearen Optimierungsproblemen ist die Zielfunktion einen lineare Funktion
+ und die Nebenbedingungen liegen als lineare Gleichungen oder Ungleichungen
+ vor.
+ 
+\end_layout
+
+\begin_layout Standard
+Vor der Lösung eines Optimierungsproblems müssen zunächst:
+\end_layout
+
+\begin_layout Itemize
+die Entscheidungsvariablen für die verschiedenen Alternativen definiert,
+\end_layout
+
+\begin_layout Itemize
+die Nebenbedingungen aufgestellt und
+\end_layout
+
+\begin_layout Itemize
+die Zielfunktion als lineare Funktion der Entscheidungsvariablen formuliert
+ werden.
+\end_layout
+
+\begin_layout Standard
+Zur Lösung linearer Optimierungsverfahren werden heutzutage leitstungsfähige
+ Solver als kommerzielle und freie Software eingesetzt.
+ Die etablierte Methode zur Lösung linearer Optimierungsprobleme 
+\begin_inset Quotes gld
+\end_inset
+
+per Hand
+\begin_inset Quotes grd
+\end_inset
+
+ ist das Simplexverfahren, das im nachfolgenden kurz vorgestellt und anhand
+ eines Beispiels vorgeführt wird.
+\end_layout
+
+\begin_layout Subsubsection
+Simplexverfahren
+\end_layout
+
+\begin_layout Standard
+Zur Veranschaulichung des Simplexverfahrens wird das folgende (lineare)
+ Optimierungsproblem betrachtet: Ein Spediteur möchte seinen Umsatz für
+ einen Transport mit einem LKW auf einer bisher als Leerfahrt geplanten
+ Route maximieren und kann zwei unterschiedliche Güter transportieren.
+ Die Entscheidungsvariablen 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+und 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ bilden die zu transportierende Masse in t der beiden Güter ab.
+ Tabelle 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "tbl:umsatz"
+
+\end_inset
+
+ zeigt den erzielten Umsatz je transportierte Tonne der Güter.
+\end_layout
+
+\begin_layout Standard
+Folgende Restriktionen ergeben sich durch den vorhandenen LKW
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Vereinfachend wird angenommen, dass Ladefläche und Ladevolumen unabhängig
+ voneinander begrenzend wirken.
+ Ein intelligentes Bilden von Stapeln wird vernachlässigt.
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Itemize
+Die transportiere Gesamtmasse darf fünf Tonnen nicht überschreiten.
+\end_layout
+
+\begin_layout Itemize
+Die Gesamtladefläche des LKW beträgt 20 m².
+\end_layout
+
+\begin_layout Itemize
+Das Gesamtladevolumen des LKW beträgt 8 m³.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tbl:umsatz"
+
+\end_inset
+
+Umsatz je Gut in EUR
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Gut
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Umsatz je t in EUR
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ladefläche in m² je t
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ladevolumen in m³ je t
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+200
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+300
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Aus dem soeben formulierten Optimierungsproblem lassen sich die Zielfunktion
+ und Nebenbedingungen direkt ableiten und in mathematische Funktionen und
+ Ungleichungen überführen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "95col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $200x_{1}+300x_{2}\text{ → max}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{1}+x_{2}\text{ ≤ 5}$
+\end_inset
+
+ (
+\begin_inset Formula $s_{1}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $2x_{1}+5x_{2}\text{ ≤ }20$
+\end_inset
+
+ (
+\begin_inset Formula $s_{2}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $2x_{1}+x_{2}\leq8$
+\end_inset
+
+ (
+\begin_inset Formula $s_{3}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+
+\begin_inset Formula $\text{ ≥ 0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Der gültige Lösungsraum des Optimierungsproblems lässt sich in einem Koordinaten
+system veranschaulichen (siehe Abbildung 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "fig:simplex-ex01"
+
+\end_inset
+
+).
+ Die Begrenzung der Tonnage ist durch die durchgezogene Linie dargestellt,
+ die Einschränkungen durch Ladefläche und Ladevolumen sind durch gestrichelte
+ Linien gezeichnet.
+ Innerhalb der schraffierten Fläche liegt der zulässige Lösungsraum des
+ Optimierungsproblems, da alle Restriktionen eingehalten sind.
+ So ist beispielsweise 
+\begin_inset Formula $x_{1}=x_{2}=2$
+\end_inset
+
+ eine gültige Lösung mit dem Umsatz (Zielfunktionswert) von 
+\begin_inset Formula $1000=200\cdot2+300\cdot2$
+\end_inset
+
+.
+ Mit dem Simplexverfahren wird diejenige Lösung gesucht, die den Zielfunktionswe
+rt maximiert.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename simplex-ex01.png
+	lyxscale 40
+	width 60text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:simplex-ex01"
+
+\end_inset
+
+Zulässiger Lösungsraum des Optimierungsproblems
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vor Anwendung des Simlplexalgorithmus müssen alle Restriktionen in Gleichungsfor
+m vorliegen.
+ Durch Einführung von Schlupfvariablen 
+\begin_inset Formula $s_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $s_{2}$
+\end_inset
+
+ und 
+\begin_inset Formula $s_{3}$
+\end_inset
+
+ lässt sich aus jeder Ungleichungen eine Gleichungen erzeugen.
+ Die Schlupfvariable nimmt den 
+\begin_inset Quotes gld
+\end_inset
+
+Restwert
+\begin_inset Quotes grd
+\end_inset
+
+ der Ungleichung an und füllt die linke Seite so auf, dass die Gleichheitsbeding
+ung erfüllt wird.
+ Die erste Nebenbedingung als Gleichung formuliert lautet beispielsweise
+ folgendermaßen:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{1}+x_{2}+s_{1}=5$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Gilt für die erste Restriktion beispielsweise 
+\begin_inset Formula $x_{1}=x_{2}=2$
+\end_inset
+
+, so ergibt sich automatisch 
+\begin_inset Formula $s_{1}=1$
+\end_inset
+
+, damit die erste Nebenbedingung erfüllt ist.
+ Die Schlupfvariablen spielen für das Verfahren Spaltengenerierung (siehe
+ Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "sub:Spaltengenerierung"
+
+\end_inset
+
+) eine wichtige Rolle und werden dort vertieft.
+ Bestehen die Ungleichungen nur aus Bedingungen mit 
+\begin_inset Formula $\leq$
+\end_inset
+
+, dann lässt sich sehr einfach eine zulässige Ausgangslösung für das Optimierung
+sverfahren ermitteln, indem alle Schlupvariablen auf den Wert der rechten
+ Seite der Ungleichung gesetzt werden.
+ Das bedeutet gleichzeitig, dass für alle Entscheindungsvariablen 
+\begin_inset Formula $x_{i}=0$
+\end_inset
+
+ gilt.
+\end_layout
+
+\begin_layout Standard
+Zur eindeutigen Lösung eines lineare Gleichungssystems mit n Gleichungen
+ wird die gleiche Anzahl Variablen benötigt.
+ Diese n Varaiblen des Optimierungsproblems werden als Basisvariablen bezeichnet.
+ In der Ausgangslösung sind alle n Schlupfvariablen in der Basis.
+ Variablen, die nicht in der Basis sind, werden Nichtbasisvarablen genannt.
+ Kernidee des Simplexverfahrens ist es, ausgehend von einer zulässigen Ausgangsl
+ösung schrittweise mit dem Austausch von Basisvariablen durch Nichtbasisvariable
+n eine Verbesserung des Zielfunktionswertes zu erreichen, bis die optimale
+ Lösung erreicht wird.
+\end_layout
+
+\begin_layout Standard
+Für manuelle Berechnung eines linearen Optimierungsproblem wird es in ein
+ Simplextableau übertragen und gelöst.
+ Abildung 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "fig:ausgang"
+
+\end_inset
+
+ zeigt das Optimierungsproblem des Spediteurs im Simplextableau.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename simplex01.png
+	lyxscale 80
+	width 70text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ausgang"
+
+\end_inset
+
+Ausgangslösung im Simplextableau
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In den Spalten des Simplextableaus stehen die Variablen des Optimierungsproblems.
+ Grau hinterlegt sind die Basisvariablen.
+ Die Zeilen des Tableaus entsprechen die Nebenbedingungen des Optimierungsproble
+ms und in der letzten Spalte kann man die Werte des Basisvariablen ablesen.
+ Die unterste Zeile entspricht der Zielfunktion mit negierten Parametern.
+ Dies sind die reduzierten Kosten in der aktuellen Lösung.
+ Die negierten reduzieren Kosten einer Variable geben an, wie stark sich
+ der Zielfunktionswert erhöht, wenn man die entsprechende Variable um eine
+ Mengeneinheit erhöhen würde.
+ Im Beispiel erhöht sich der Zielfunktionwert um 300 EUR, falls man 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ von 0 auf 1 erhöhen würde.
+\end_layout
+
+\begin_layout Standard
+Das Simplexverfahren tauscht je Iteration eine Nichtbasisvariable gegen
+ eine Basisvariable aus, um den Zielfunktionswert zu vergrößern, bis die
+ optimale Lösung gefunden wurde.
+ Für einen Austausch sind drei Schritte notwendig:
+\end_layout
+
+\begin_layout Enumerate
+Ermittlung der Pivotspalte
+\end_layout
+
+\begin_layout Enumerate
+Ermittlung der Pivotzeile
+\end_layout
+
+\begin_layout Enumerate
+Basistausch und Aktualisierung des Tableaus
+\end_layout
+
+\begin_layout Subsubsection*
+Ermittlung der Pivotspalte
+\end_layout
+
+\begin_layout Standard
+Jede Nichtbasisvariable, die negative reduzierte Kosten aufweist, erhöht
+ potentiell den Zielfunktionswert und ist daher geeignet, um von der Nichtbasis
+ in die Basis getauscht zu werden.
+ Eine gute Heuristik zur Auswahl der Pivotspalte ist die Wahl derjenigen
+ Nichtbasisvariable mit den negativsten reduzierten Kosten.
+ Im Beispiel von Abildung 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "fig:ausgang"
+
+\end_inset
+
+ wird daher 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ als Pivotspalte ausgewählt und in die Basis getauscht.
+ Gibt es bei der Suche nach einer Pivotspalte keine Nichtbasisvariable mit
+ negativen reduzierten Kosten, so wurde die optimale Lösung gefunden und
+ das Verfahren bricht ab.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+Ermittlung der Pivotzeile
+\end_layout
+
+\begin_layout Standard
+Für die Auswahl der Pivotzeile muss ermittelt werden, welche der Restriktionen
+ maßgeblich begrenzend auf die zu tauschende Varaible wirkt.
+ Es muss sichergestellt werden, dass nach dem Basistausch weiterhin alle
+ Restriktionen eingehalten werden.
+ Dafür wird in jeder Zeile die rechte Seite durch den Koeffizienten in der
+ Pivotspalte geteilt und daraus da Minimum ermittelt.
+ Die Zeile mit dem minimalen nichtnegativen Wert wird die Pivotzeile.
+ Die Basisvariable der Pivotzeile verlässt die Basis und wird gegen die
+ Nichtbasivariable getauscht.
+ Im Beispiel wird die Basisvariable 
+\begin_inset Formula $s_{2}$
+\end_inset
+
+ die Basis verlassen, da gilt 
+\begin_inset Formula $min\left\{ \left(5/1\right),\left(20/5\right),\left(8/1\right)\right\} =4$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+Basistausch und Aktualisierung des Tableaus
+\end_layout
+
+\begin_layout Standard
+Der Basistausch erfolgt so, dass im Tableau die Pivotspalte 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ zum Einheitsvektor umgeformt werden muss.
+ Dabei wird aus der Spalte von 
+\begin_inset Formula $s_{2}$
+\end_inset
+
+ eine Nichtbasisvariable und der Einheitsvektor verschwindet.
+ Der erste Schritt besteht in der Umformung der Pivotzeile.
+ Dazu wird die gesamte Zeile durch das Pivotelement geteilt: II' = 
+\begin_inset Formula $\frac{1}{5}\,\cdot$
+\end_inset
+
+ II.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename simplex02.png
+	lyxscale 80
+	width 70text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:simplex01"
+
+\end_inset
+
+Erster Simplexschritt mit Tausch 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ gegen 
+\begin_inset Formula $s_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Anschließend müssen die verbleibenden Zeilen noch so umgeformt werden, dass
+ der Einheitsvektor in der Pivotspalte 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ entsteht.
+ Dazu muss die erste Spalte folgendermaßen umgeformt werden: I' = I - II'.
+ Ebenso muss mit der dritten Zeile verfahren werden, um eine Null in der
+ Pivotspalte zu erhalten: III' = III - II'.
+ Die Zilfunktionszeile wird wie folgt umgeformt: IV' = IV + 300 
+\begin_inset Formula $\cdot$
+\end_inset
+
+ II'.
+\end_layout
+
+\begin_layout Standard
+Damit ist der Basistausch erfolgt und die Nichtbasisvariable 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ ist in die Basis aufgenommen worden.
+ Der Zielfunktionswert ist auf 1200 EUR gestiegen.
+ Es gibt im aktualisierten Tableau jedoch noch die Nichtbasisvariable 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+, die negative reduzierte Kosten aufweist und somit in die Basis aufgenommen
+ werden muss.
+ Dazu muss erneut die Pivotzeile ermittelt und der Basistausch durchgeführt
+ werden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename simplex03.png
+	lyxscale 80
+	width 70text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Zweiter Simplexschritt mit Tausch 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ gegen 
+\begin_inset Formula $s_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Um den Basistausch durchzuführen, müssen folgende vier Umformungen vorgenommen
+ werden:
+\end_layout
+
+\begin_layout Itemize
+I'' = 
+\begin_inset Formula $\frac{5}{3}\,\cdot$
+\end_inset
+
+ I'
+\end_layout
+
+\begin_layout Itemize
+II'' = II' - 
+\begin_inset Formula $\frac{2}{5}\,\cdot$
+\end_inset
+
+ I''
+\end_layout
+
+\begin_layout Itemize
+III'' = III' - 
+\begin_inset Formula $\frac{8}{5}\,\cdot$
+\end_inset
+
+ I''
+\end_layout
+
+\begin_layout Itemize
+IV'' = IV' + 80 
+\begin_inset Formula $\cdot$
+\end_inset
+
+ I''
+\end_layout
+
+\begin_layout Standard
+Der Zielfunktionswert nach dem Basistausch ist von 1200,00
+\begin_inset space ~
+\end_inset
+
+EUR auf 1333,33
+\begin_inset space ~
+\end_inset
+
+EUR gestiegen.
+ Da es keine Nichtbasisvariable gibt, die negative reduzierte Kosten aufweist,
+ ist die optimale Lösung für das Optimierungsproblem gefunden.
+ Der Spediteur sollte 1,67
+\begin_inset space ~
+\end_inset
+
+t von Gut
+\begin_inset space ~
+\end_inset
+
+1 und 3,33
+\begin_inset space ~
+\end_inset
+
+t von Gut
+\begin_inset space ~
+\end_inset
+
+2 transportieren, um seinen Umsatz zu maximieren und die Restriktionen seines
+ LKW einzuhalten.
+ Abbildung 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "fig:simplex-weg"
+
+\end_inset
+
+ zeigt die beiden durchgeführten Iterationen des Simplexverfahrens in der
+ graphischen Darstellung des Lösungsraums.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename darstellung-weg-simplex.png
+	lyxscale 40
+	width 60text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:simplex-weg"
+
+\end_inset
+
+Simplexschritte im zulässigen Lösungsraum
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Bei jeder Iteration geht das Simplexverfahren entlang den Rändern des Lösungsrau
+ms bis nach endlich vielen Schritten die optimale Lösung gefunden ist.
+ Es kann gezeigt werden, dass die optimale Lösung eines linearen Optimierungspro
+blems immer in (mindestens) einer Ecke des Lösungsraums gefunden werden
+ kann.
+ In Sonderfällen kann der optimale Zielfunktionswert auch in mehreren Ecken
+ erreicht werden.
+ Es gibt dann mehrere gleichwertige Lösungen.
+\end_layout
+
+\begin_layout Subsubsection
+Schattenpreise und zusätzliche Alternativen
+\end_layout
+
+\begin_layout Standard
+Aus dem Tableau der optimalen Lösung können mehrere Informationen gewonnen
+ werden, um das Ergebnis zu interpretieren.
+ Neben dem Zielfunktionswert und den Größen der Basisvariablen 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ und 
+\begin_inset Formula $s_{3}$
+\end_inset
+
+ können im Simplextableau die Schattenpreise der Nebenbedingungen abgelesen
+ werden.
+ Sie entsprechen den reduzierten Kosten der Schlupfvariablen 
+\begin_inset Formula $s_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $s_{2}$
+\end_inset
+
+ und 
+\begin_inset Formula $s_{3}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename simplex04.png
+	lyxscale 80
+	width 70text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Simplex-final"
+
+\end_inset
+
+Simplextableau der optimalen Lösung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Ganzzahlige Optimierung
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Ganzzahlige-Optimierung"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+bla
+\end_layout
+
+\begin_layout Subsection
+Spaltengenerierung
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Spaltengenerierung"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+bla
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Anwendung in der Linienplanung
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Anwendung in der Fahrplanung
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Anwendung in der Umlaufplanung
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Anwendung in der Dienstplanung
+\end_layout
+
+\end_body
+\end_document
